@@ -18,7 +18,7 @@ caching_subreddit="Mod_Button_Bot_Log"
 
 class Bot(object):
     
-    @retry(wait_exponential_multiplier=1000, wait_exponential_max=10000)
+    #@retry(wait_exponential_multiplier=1000, wait_exponential_max=10000)
     def load_caches(self):
         #load already-processed comments cache and modlist cache
         print("loading caches")
@@ -39,14 +39,14 @@ class Bot(object):
             self.modlist = {}
             self.update_moderators()
     
-    @retry(wait_exponential_multiplier=1000, wait_exponential_max=10000)
+    #@retry(wait_exponential_multiplier=1000, wait_exponential_max=10000)
     def login_bot(self):
 
         print("logging in...")
         r.login(username, password)
         print("success")
     
-    @retry(wait_exponential_multiplier=1000, wait_exponential_max=10000)
+    #@retry(wait_exponential_multiplier=1000, wait_exponential_max=10000)
     def do_comments(self):
 
         print("processing comments")
@@ -185,7 +185,7 @@ class Bot(object):
         if acted_this_cycle:
             r.edit_wiki_page("mod_button_bot_log","comment_cache",str(self.cache))
 
-    @retry(wait_exponential_multiplier=1000, wait_exponential_max=10000)  
+    #@retry(wait_exponential_multiplier=1000, wait_exponential_max=10000)  
     def update_moderators(self):
 
         print("Updating all moderators")
@@ -195,7 +195,7 @@ class Bot(object):
 
         r.edit_wiki_page("mod_button_bot_log","modlist_cache",str(self.modlist))
     
-    @retry(wait_exponential_multiplier=1000, wait_exponential_max=10000)
+   # @retry(wait_exponential_multiplier=1000, wait_exponential_max=10000)
     def update_moderators_in_subreddit(self, subreddit):
 
         mods=[]
@@ -205,7 +205,7 @@ class Bot(object):
         self.modlist[subreddit.display_name]=mods
         print("moderators loaded for /r/"+subreddit.display_name)
     
-    @retry(wait_exponential_multiplier=1000, wait_exponential_max=10000)        
+    #@retry(wait_exponential_multiplier=1000, wait_exponential_max=10000)        
     def check_messages(self):
 
         for message in r.get_unread(limit=None):
