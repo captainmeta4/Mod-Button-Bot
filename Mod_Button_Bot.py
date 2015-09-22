@@ -76,7 +76,7 @@ class Bot(object):
                     comment.remove()
                     
                     parent.remove()
-                    comment.subreddit.add_ban(parent_comment.author)
+                    comment.subreddit.add_ban(parent.author)
                     self.log_entry(comment.subreddit, comment.author, parent.author, "ban", parent.permalink)
 
                 if comment.body == "!unban":
